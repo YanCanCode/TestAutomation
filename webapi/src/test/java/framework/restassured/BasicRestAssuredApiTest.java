@@ -1,4 +1,4 @@
-package com.example.framework.httpentity.restassured;
+package framework.restassured;
 
 import io.restassured.RestAssured;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class BasicRestAssuredApiTest {
     @Test
     public void bodyContainsCorrectValues() {
         // equalTo is a Hamcrest matcher
-        RestAssured.get(BASE_URL + "YanCanCode")
+        RestAssured.get(BASE_URL + "users/YanCanCode")
                 .then()
                 .assertThat()
                 .body("login", equalTo("YanCanCode"))

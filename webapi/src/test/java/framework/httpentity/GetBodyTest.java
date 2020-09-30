@@ -1,14 +1,14 @@
-package com.example.framework.httpentity;
+package framework.httpentity;
 
-import com.example.testautomationexample.entities.User;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import testautomationexample.entities.User;
 
 public class GetBodyTest {
 
+    //TODO: Move BASE_URL to properties file
     private static final String BASE_URL = "https://api.github.com/";
     protected static RestTemplate restTemplate = new RestTemplate();
 
@@ -23,6 +23,6 @@ public class GetBodyTest {
         ResponseEntity<User> response = restTemplate.getForEntity(BASE_URL + "users/YanCanCode", User.class);
 
         // Assert
-        assertEquals("YanCanCode", response.getBody().getLogin());
+        Assertions.assertEquals("YanCanCode", response.getBody().getLogin());
     }
 }

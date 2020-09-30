@@ -1,4 +1,4 @@
-package com.example.framework.httpentity;
+package framework.httpentity;
 
 import org.junit.Rule;
 import org.junit.Test;

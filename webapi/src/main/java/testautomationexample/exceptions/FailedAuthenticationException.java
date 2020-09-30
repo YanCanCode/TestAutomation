@@ -1,4 +1,4 @@
-package com.example.testautomationexample.exceptions;
+package testautomationexample.exceptions;
 
 public class FailedAuthenticationException{
 

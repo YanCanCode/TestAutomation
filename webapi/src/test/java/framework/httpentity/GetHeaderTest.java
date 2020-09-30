@@ -1,4 +1,4 @@
-package com.example.framework.httpentity;
+package framework.httpentity;
 
 
 import org.junit.jupiter.api.BeforeAll;

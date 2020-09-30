@@ -1,4 +1,4 @@
-package com.example.testautomationexample.entities;
+package testautomationexample.entities;
 
 public class User {
     private String login;
