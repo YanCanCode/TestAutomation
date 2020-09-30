@@ -6,7 +6,6 @@
     <modules>
         <module>webapi</module>
         <module>common-utils</module>
-        <module>webapi</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
