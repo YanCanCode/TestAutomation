@@ -25,17 +25,18 @@ public class GetHeaderTest {
 
     @BeforeAll
     static void sendGetToBaseEndpoint() {
+        // Arrange
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         headers.add("User-Agent", "TestExample");
 
         HttpEntity<String> request = new HttpEntity<>(headers);
 
-        //Send request
+        // Act
         response = restTemplate.exchange(BASE_URL,HttpMethod.GET,request,String.class);
     }
 
     @Test
-    public void getReturns200Test() {
+    public void getReturns200() {
         assertEquals(200,response.getStatusCodeValue());
     }
 
@@ -44,7 +45,7 @@ public class GetHeaderTest {
             "X-Ratelimit-Limit, 60",
             "content-type, application/json; charset=utf-8"
     })
-    public void parameterizedHeadersTest(String header, String expectedValue) {
+    public void parameterizedHeaders(String header, String expectedValue) {
         String contentType = response.getHeaders().getFirst(header);
         assertEquals(expectedValue, contentType);
     }
