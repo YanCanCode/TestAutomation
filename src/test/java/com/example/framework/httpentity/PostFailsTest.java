@@ -37,6 +37,19 @@ public class PostFailsTest {
         });
     }
 
+    // Need help with this one
+//    @Test
+//    public void negative_GetFailContainsMessage() {
+//        exceptionRule.expect(HttpClientErrorException.Unauthorized.class);
+//        exceptionRule.expectMessage("Requires Authentication");
+//
+//        //Act
+//        ResponseEntity<FailedAuthenticationException> response = restTemplate
+//                .getForEntity(BASE_URL + "user/repos",FailedAuthenticationException.class);
+//        //Assert
+//        Assertions.assertEquals("Requires Authentication", response.getBody().getMessage());
+//    }
+
     public ResponseEntity noAuthorizationPost(){
         //Setup
         String body = "Test body";
@@ -49,6 +62,8 @@ public class PostFailsTest {
 
         return response;
     }
+
+
 }
 
 

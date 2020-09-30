@@ -56,7 +56,7 @@ public class GetHeaderTest {
      * Parameterization maintains a clean codebase.
      *
     @Test
-    public void xRateLimitIsPresentTest() {
+    public void xRateLimitIsPresent() {
         
         //Arrange
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
