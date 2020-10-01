@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/YanCanCode/testautomation?style=shield))](https://github.com/YanCanCode/TestAutomation)
+[![CircleCI](https://circleci.com/gh/YanCanCode/TestAutomation.svg?style=shield)](https://app.circleci.com/pipelines/github/YanCanCode/TestAutomation)
 
 
 
