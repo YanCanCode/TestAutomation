@@ -15,7 +15,6 @@ public class GetBodyTest {
 
 
     private String BASE_URL = "https://api.github.com";
-
     protected RestTemplate restTemplate = new RestTemplate();
 
     @Rule
