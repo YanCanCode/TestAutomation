@@ -1,6 +1,5 @@
-package httpmethods;
+package test.framework.httpmethods;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -9,8 +8,8 @@ import org.springframework.web.client.RestTemplate;
 
 public class Post {
 
-    @Value("${api.url}")
-    private static String BASE_URL;
+
+    private static String BASE_URL = "https://api.github.com";
 
     protected static RestTemplate restTemplate = new RestTemplate();
 
@@ -22,7 +21,7 @@ public class Post {
 
         // Make request
         ResponseEntity response = restTemplate
-                .exchange(BASE_URL + "user/repos", HttpMethod.POST, request, String.class);
+                .exchange(BASE_URL + "/user/repos", HttpMethod.POST, request, String.class);
 
         return response;
     }

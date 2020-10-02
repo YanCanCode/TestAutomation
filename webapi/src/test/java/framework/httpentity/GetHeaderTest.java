@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GetHeaderTest {
 
 
-    @Value("${api.url}")
-    private static String BASE_URL;
+    private static String BASE_URL = "https://api.github.com";
 
     protected static RestTemplate restTemplate = new RestTemplate();
     private static HttpEntity<String> request;
@@ -41,6 +39,7 @@ public class GetHeaderTest {
     @Test
     public void getReturns200() {
         assertEquals(200,response.getStatusCodeValue());
+
     }
 
     @ParameterizedTest

@@ -1,18 +1,15 @@
 package framework.httpentity;
 
-import httpmethods.Post;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import test.framework.httpmethods.Post;
 
 public class PostFailsTest {
-
-    @Value("${api.url}")
-    private String BASE_URL;
 
     protected static RestTemplate restTemplate = new RestTemplate();
 
@@ -25,7 +22,6 @@ public class PostFailsTest {
         // If any other exceptions are thrown by the code, test will fail
         exceptionRule.expect(HttpClientErrorException.Unauthorized.class);
         exceptionRule.expectMessage("401 Unauthorized");
-
         Post.noAuthorizationPost();
     }
 
