@@ -1,19 +1,19 @@
 package framework.httpentity;
 
+import httpmethods.Post;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 public class PostFailsTest {
 
-    private static String BASE_URL = "https://api.github.com/";
+    @Value("${api.url}")
+    private String BASE_URL;
+
     protected static RestTemplate restTemplate = new RestTemplate();
 
     @Rule
@@ -26,14 +26,14 @@ public class PostFailsTest {
         exceptionRule.expect(HttpClientErrorException.Unauthorized.class);
         exceptionRule.expectMessage("401 Unauthorized");
 
-        noAuthorizationPost();
+        Post.noAuthorizationPost();
     }
 
     //Junit5 Style
     @Test
     public void negative_PostWithoutAuthorizationLambda() {
         Assertions.assertThrows(HttpClientErrorException.Unauthorized.class, () -> {
-            noAuthorizationPost();
+            Post.noAuthorizationPost();
         });
     }
 
@@ -50,18 +50,7 @@ public class PostFailsTest {
 //        Assertions.assertEquals("Requires Authentication", response.getBody().getMessage());
 //    }
 
-    public ResponseEntity noAuthorizationPost(){
-        //Setup
-        String body = "Test body";
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> request = new HttpEntity<>(body, headers);
 
-        // Make call
-        ResponseEntity response = restTemplate
-                .exchange(BASE_URL + "user/repos", HttpMethod.POST, request, String.class);
-
-        return response;
-    }
 
 
 }

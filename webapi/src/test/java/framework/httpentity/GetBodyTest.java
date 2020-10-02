@@ -2,6 +2,7 @@ package framework.httpentity;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import testautomationexample.entities.User;
@@ -9,7 +10,10 @@ import testautomationexample.entities.User;
 public class GetBodyTest {
 
     //TODO: Move BASE_URL to properties file
-    private static final String BASE_URL = "https://api.github.com/";
+
+    @Value("${api.url}")
+    private String BASE_URL;
+
     protected static RestTemplate restTemplate = new RestTemplate();
 
     @Test
