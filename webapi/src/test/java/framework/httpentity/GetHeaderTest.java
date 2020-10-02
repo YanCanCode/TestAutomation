@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class GetHeaderTest {
@@ -27,8 +27,8 @@ public class GetHeaderTest {
     @BeforeAll
     static void sendGetToBaseEndpoint() {
         // Arrange
-        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("User-Agent", "TestExample");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("User-Agent","Test");
 
         HttpEntity<String> request = new HttpEntity<>(headers);
 
@@ -42,13 +42,31 @@ public class GetHeaderTest {
 
     }
 
+    @Test
+    public void getServerIsGitHub() {
+        String serverName = response
+                .getHeaders()
+                .getFirst("Server");
+
+        assertEquals("GitHub.com", serverName);
+    }
+
+    @Test
+    public void getEtagIsPresent() {
+        boolean tagIsPresent = response.getHeaders().containsKey("ETag");
+        assertTrue(tagIsPresent);
+    }
+
     @ParameterizedTest
     @CsvSource({
             "X-Ratelimit-Limit, 60",
             "content-type, application/json; charset=utf-8"
     })
     public void parameterizedHeaders(String header, String expectedValue) {
-        String contentType = response.getHeaders().getFirst(header);
+        String contentType = response
+                .getHeaders()
+                .getFirst(header);
+
         assertEquals(expectedValue, contentType);
     }
     
