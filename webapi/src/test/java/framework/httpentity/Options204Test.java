@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class Options204Test {
 
-    private static String BASE_URL = "https://api.github.com";
+    private static final String BASE_URL = "https://api.github.com";
 
     protected static RestTemplate restTemplate = new RestTemplate();
 

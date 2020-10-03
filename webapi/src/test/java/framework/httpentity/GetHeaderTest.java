@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GetHeaderTest {
 
-    private static String BASE_URL = "https://api.github.com";
+    private static final String BASE_URL = "https://api.github.com";
 
     protected static RestTemplate restTemplate = new RestTemplate();
     private static HttpEntity<String> request;

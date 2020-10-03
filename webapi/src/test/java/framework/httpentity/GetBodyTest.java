@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class GetBodyTest {
 
 
-    private String BASE_URL = "https://api.github.com";
+    private final String BASE_URL = "https://api.github.com";
     protected RestTemplate restTemplate = new RestTemplate();
 
     @Rule
